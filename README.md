@@ -6,6 +6,14 @@
 
 #### 框架适合小白使用，逻辑比较简单，后续会重点优化，持续更新中
 
+![Image text](bigbigqiang/imgs/ban.png)
+
+![Image text](bigbigqiang/imgs/button.png)
+
+![Image text](bigbigqiang/imgs/form.png)
+
+![Image text](bigbigqiang/imgs/table.png)
+
 ```
 //添加依赖
 npm install
