@@ -6,14 +6,16 @@
 
 #### 按需加载优化 
 
-    没有按需加载
+没有按需加载
 
-   ![Image text](../../../bigbigqiang/raw/master/imgs/pre.png)
+![Image text](../../../bigbigqiang/raw/master/imgs/pre.png)
    
-   可以看到页面加载了一个bundle.js文件，文件大小达到1.9M，代码量是26万行，虽然是后台管理，但是对于这样把所有js全部打包到一个js里面，页面初次加载出现长时间等待的情况，是完全不能忍的！！！！
-   所以必须进行按需加载！
+可以看到页面加载了一个bundle.js文件，文件大小达到1.9M，代码量是26万行，虽然是后台管理，但是对于这样把所有js全部打包到一个js里面，页面初次加载出现长时间等待的情况，是完全不能忍的！！！！
+所以必须进行按需加载！
    
-   ![Image text](../../../bigbigqiang/raw/master/imgs/after.png)
+![Image text](../../../bigbigqiang/raw/master/imgs/after.png)
+   
+优化之后，可以看到页面会加载类似1.chumk.js,这样就实现了按需加载（可在/routers/routes.js查看代码）
 
 #### 框架适合小白使用，逻辑比较简单，后续会重点优化，持续更新中
 
