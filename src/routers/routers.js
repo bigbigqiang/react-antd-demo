@@ -6,28 +6,51 @@ import {
     Switch
 } from 'react-router-dom';
 
-import Dashboard from "../pages/dashboard/Dashboard";
-import Buttons from "../pages/ui/Buttons";
-import Icons from '../pages/ui/Icons';
-import Spins from '../pages/ui/Spins';
-import Modals from '../pages/ui/Modals';
-import Notifications from '../pages/ui/Notifications';
-import Tabs from '../pages/ui/Tabs';
-import Banners from '../pages/ui/banners';
-import Wysiwyg from '../pages/ui/Wysiwyg';
-import Drags from '../pages/ui/Draggable';
-import Gallery from '../pages/ui/Gallery';
-import MapUi from '../pages/ui/map';
-import BasicAnimations from '../pages/animation/BasicAnimations';
-import ExampleAnimations from '../pages/animation/ExampleAnimations';
-import BasicTable from '../pages/tables/BasicTables';
-import AdvancedTable from '../pages/tables/AdvancedTables';
-import AsynchronousTable from '../pages/tables/AsynchronousTable';
-import BasicForm from '../pages/forms/BasicForm';
-import Echarts from '../pages/charts/Echarts';
-import Recharts from '../pages/charts/Recharts';
+// 异步按需加载component
+function asyncComponent(getComponent) {
+    return class AsyncComponent extends Component {
+        static Component = null;
+        state = { Component: AsyncComponent.Component };
 
-import Cssmodule from '../pages/cssmodule';
+        componentWillMount() {
+            if (!this.state.Component) {
+                getComponent().then(({default: Component}) => {
+                    AsyncComponent.Component = Component;
+                    this.setState({ Component })
+                })
+            }
+        }
+        render() {
+            const { Component } = this.state;
+            if (Component) {
+                return <Component {...this.props} />
+            }
+            return null
+        }
+    }
+}
+
+const Buttons = asyncComponent(() => import('../pages/ui/Buttons'));
+const Icons = asyncComponent(() => import('../pages/ui/Icons'));
+const Dashboard = asyncComponent(() => import('../pages/dashboard/Dashboard'));
+const Spins = asyncComponent(() => import('../pages/ui/Spins'));
+const Modals = asyncComponent(() => import('../pages/ui/Modals'));
+const Notifications = asyncComponent(() => import('../pages/ui/Notifications'));
+const Tabs = asyncComponent(() => import('../pages/ui/Tabs'));
+const Banners = asyncComponent(() => import('../pages/ui/banners'));
+const Wysiwyg = asyncComponent(() => import('../pages/ui/Wysiwyg'));
+const Drags = asyncComponent(() => import('../pages/ui/Draggable'));
+const Gallery = asyncComponent(() => import('../pages/ui/Gallery'));
+const MapUi = asyncComponent(() => import('../pages/ui/map'));
+const BasicAnimations = asyncComponent(() => import('../pages/animation/BasicAnimations'));
+const ExampleAnimations = asyncComponent(() => import('../pages/animation/ExampleAnimations'));
+const BasicTable = asyncComponent(() => import('../pages/tables/BasicTables'));
+const AdvancedTable = asyncComponent(() => import('../pages/tables/AdvancedTables'));
+const AsynchronousTable = asyncComponent(() => import('../pages/tables/AsynchronousTable'));
+const BasicForm = asyncComponent(() => import('../pages/forms/BasicForm'));
+const Echarts = asyncComponent(() => import('../pages/charts/Echarts'));
+const Recharts = asyncComponent(() => import('../pages/charts/Recharts'));
+const Cssmodule = asyncComponent(() => import('../pages/cssmodule'));
 
 export default class Routers extends Component {
     constructor(props) {
@@ -61,7 +84,6 @@ export default class Routers extends Component {
                     <Dashboard />
                 )}/>
                 <Route path="*" render={()=><Redirect to="/404"/>} />
-                {/*<Route exact path="/" render={()=><Redirect to="/home"/>}/>*/}
             </Switch>
         );
     }
