@@ -53,9 +53,6 @@ const Recharts = asyncComponent(() => import('../pages/charts/Recharts'));
 const Cssmodule = asyncComponent(() => import('../pages/cssmodule'));
 
 export default class Routers extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <Switch>

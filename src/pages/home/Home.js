@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+// import { connect } from 'react-redux';
 
 import './home.css'
 
@@ -7,10 +8,15 @@ import menus from '../../constants/menus';
 import {Layout, Icon} from 'antd';
 import Menus from '../../components/menus';
 import Routers from '../../routers/routers';
+import UserInfo from "../../components/userInfo";
 
 const {Header, Sider, Content} = Layout;
 
-export default class Home extends Component {
+class Home extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props)
+    }
     state = {
         collapsed: false,
     };
@@ -43,8 +49,13 @@ export default class Home extends Component {
                             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggle}
                         />
+                        <UserInfo/>
                     </Header>
-                    <Content style={{margin: '24px 16px', padding: 24, background: 'rgb(240, 242, 245)', minHeight: 280}}>
+                    <Content style={{padding: 24, background: 'rgb(240, 242, 245)', minHeight: 280}}>
+                        {/*<button onClick={this.props.changeName}>change name</button>*/}
+                        {/*<button onClick={this.props.showDialog}>showDialog</button>*/}
+                        {/*<div>{`${this.props.dialog}`} </div>*/}
+                        {/*<div>{`${this.props.card.name}`} </div>*/}
                         <Routers routerProps={this.props}/>
                     </Content>
                 </Layout>
@@ -52,3 +63,27 @@ export default class Home extends Component {
         );
     }
 }
+
+export default Home;
+
+// function mapStateToProps(state) {
+//     return state
+// }
+//
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         changeName () {
+//             dispatch({
+//                 type: 'CHANGE_NAME',
+//                 name: '葬爱'
+//             });
+//         },
+//         showDialog () {
+//             dispatch({
+//                 type: 'SHOW_DIALOG'
+//             })
+//         }
+//     }
+// }
+//
+// export default connect(mapStateToProps, mapDispatchToProps)(Home)

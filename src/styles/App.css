@@ -2,3 +2,11 @@
   height: 100%;
   width: 100%;
 }
+.userInfo{
+  float: right;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  justify-content: space-between;
+}
