@@ -15,7 +15,7 @@ github上有很多优秀的框架，作者也花费了很大的精力去整理�
 
 #### 我自己根据自己的逻辑习惯修改了框架结构包括webpack配置，router，redux和进一步优化
 
-#### 按需加载优化 
+### 按需加载优化 
 
 没有按需加载前是这样的
 
@@ -29,6 +29,8 @@ github上有很多优秀的框架，作者也花费了很大的精力去整理�
 优化之后，可以看到页面会加载类似1.chumk.js,这样就实现了按需加载（可在/routers/routes.js查看代码）
 
 #### 框架适合小白使用，逻辑比较简单，持续更新中
+
+### 对react的看法
 
 最后说一下对react的看法，由于本人先前使用的vue,对于react的接触还是有抵抗，截止到今天算是对react有一定的认识，但并没有改变我对react的看法。
 相比于vue,react更没有太多考虑框架是可使用性，我在写react代码的时候更多的感觉是在写原生js，这更说明了react封装的很差；
@@ -50,6 +52,8 @@ react简直就是为了装逼而生！
 ![Image text](../../../bigbigqiang/raw/master/imgs/form.png)
 
 ![Image text](../../../bigbigqiang/raw/master/imgs/table.png)
+
+### 运行
 
 ```
 //添加依赖
